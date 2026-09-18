@@ -1,0 +1,49 @@
+---
+title: Repository structure
+description: "Top-level layout mapped to AUTOSAR layers and doc locations."
+sidebar:
+  label: Repository structure
+  order: 3
+---
+
+# Repository structure
+
+```text
+BSW/                    # MICROSAR BSW sources + mak/ build fragments (Vector)
+BSW/<Module>/mak/       # *_cfg.mak, *_check.mak, *_defs.mak, *_rules.mak
+BSWMD/                  # BSW module descriptions (*.arxml) per module (Vector)
+SWC/SecAccess/          # Ford security-access SWC (Vector, Ford-customised)
+ThirdParty/Mcal_Rh850P1xC/  # Renesas MCAL integration (3rd-party via Vector)
+Generators/             # RTE/XSLT, A2L, MSSV plugins, Wdg/McData tooling (Vector)
+DaVinciConfigurator/    # Configurator installation (Vector)
+Doc/                    # Delivery docs: TechnicalReferences, ApplicationNotes,
+                        #   UserManuals, DeliveryInformation, ReleaseNotes (Vector PDFs)
+Misc/                   # RteAnalyzer, SipModificationChecker, Wdg xsltproc, McData
+docs/                   # THIS site (Astro Starlight, MIT)
+  src/content/docs/
+    index.mdx           # landing
+    asw|cdd|services|ecu-abstraction|mcal|communication|memory|diagnostics|crypto|system|tools/
+    modules/<layer>/<Module>.mdx   # canonical module pages
+    sip/                # SIP hub + per-module SIP notes
+    general/            # overviews + converted delivery documents
+LICENSE                 # MIT + third-party notice
+SipLicense.lic          # Vector SIP license (CBD1601056 D05, SIP 18.00.15)
+BetaDisclaimer.txt      # beta disclaimer
+```
+
+## AUTOSAR mapping
+
+| Repo path | AUTOSAR layer |
+|-----------|---------------|
+| `SWC/` | Application Software (ASW) |
+| `BSW/Xcp`, `BSW/CanXcp`, `BSW/Vsg`, `BSW/CryFord` | Complex Device Drivers (CDD) |
+| `BSW/Os`, `BswM`, `EcuM`, `Det`, `Dem`, `Dcm`, `NvM`, `Csm`, `WdgM`, `ComM`, `Nm` | Services |
+| `BSW/CanIf`, `CanSM`, `PduR`, `MemIf`, `Fee_30_SmallSector`, `WdgIf`, `CanTrcv_30_Tja1043`, `_Common` | ECU Abstraction |
+| `BSW/Can`, `BSW/Mcal_Rh850P1xC`, `BSW/Cry_30_Rh850Icum`, `ThirdParty/` | MCAL / hardware-adjacent |
+| `BSW/Com`, `PduR`, `CanTp`, `CanNm`, `Nm`, `ComM`, `CanIf`, `CanSM`, `Can` | Communication stack |
+| `BSW/NvM`, `MemIf`, `Fee_30_SmallSector` | Memory stack |
+| `BSW/Det`, `Dem`, `Dcm` | Diagnostics |
+| `BSW/Csm`, `Cry`, `Cry_30_Rh850Icum`, `CryFord`, `SecMod` | Crypto |
+| `Generators/`, `DaVinciConfigurator/`, `BSWMD/`, `Misc/` | Tooling / descriptions |
+
+[Back to top](#repository-structure)

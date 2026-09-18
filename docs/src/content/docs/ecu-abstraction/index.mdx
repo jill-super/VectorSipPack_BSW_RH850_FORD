@@ -1,0 +1,29 @@
+---
+title: ECU Abstraction
+description: "ECU Abstraction layer: hardware-independent interfaces (CAN interface/state management, PDU router, memory/watchdog abstraction, transceiver)."
+sidebar:
+  label: ECU Abstraction
+  order: 20
+---
+
+# ECU Abstraction
+
+ECU Abstraction layer: hardware-independent interfaces (CAN interface/state management, PDU router, memory/watchdog abstraction, transceiver).
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [CanIf](../modules/ecu-abstraction/CanIf) | Hardware-independent CAN abstraction: Tx/Rx routing between PDU Router/CanTp/CanNm/Xcp and | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [CanSM](../modules/ecu-abstraction/CanSM) | Bus state machine per CAN network (init, start/stop, bus-off recovery, Tx timeout handling | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [CanTrcv_30_Tja1043](../modules/ecu-abstraction/CanTrcv_30_Tja1043) | Transceiver driver for NXP TJA1043 (normal/standby/sleep, wake-up detection) controlled vi | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [PduR](../modules/ecu-abstraction/PduR) | Routes I-PDUs between COM, DCM, CanTp, CanIf and other upper/lower layers per static routi | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [WdgIf](../modules/ecu-abstraction/WdgIf) | Hardware-independent watchdog abstraction over the MCU watchdog driver; trigger/mode servi | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#ecu-abstraction)

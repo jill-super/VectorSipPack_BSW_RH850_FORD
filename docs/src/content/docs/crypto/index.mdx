@@ -1,0 +1,29 @@
+---
+title: Crypto
+description: "Cryptographic stack: Csm dispatch, software/hardware crypto primitives, Ford access and third-party crypto lib."
+sidebar:
+  label: Crypto
+  order: 20
+---
+
+# Crypto
+
+Cryptographic stack: Csm dispatch, software/hardware crypto primitives, Ford access and third-party crypto lib.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [Cry](../modules/crypto/Cry) | Software crypto primitives (AES-128 encrypt/decrypt, CMAC-AES128 generate/verify, HMAC-SHA | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [CryFord](../modules/crypto/CryFord) | Ford-specific crypto/MACsec access package: prebuilt library plus C configuration; wiring  | ![o](https://img.shields.io/badge/origin-Vector%20(Ford--customised)-purple) |
+| [Cry_30_Rh850Icum](../modules/crypto/Cry_30_Rh850Icum) | Hardware-backed crypto driver for the RH850 ICUM (AES, CMAC, RNG, key extract/wrap) used t | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Csm](../modules/crypto/Csm) | Dispatches cryptographic jobs (encrypt/decrypt, MAC generate/verify, RNG, key handling) to | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [SecMod](../modules/crypto/SecMod) | Third-party embedded crypto library (cv act library/ES by cryptovision) providing big-numb | ![o](https://img.shields.io/badge/origin-third--party%20via%20Vector-orange) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#crypto)

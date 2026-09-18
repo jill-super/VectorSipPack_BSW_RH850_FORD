@@ -1,0 +1,26 @@
+---
+title: MCAL
+description: "Microcontroller Abstraction Layer: direct MCU peripheral drivers (CAN) and MCAL integration wrappers."
+sidebar:
+  label: MCAL
+  order: 20
+---
+
+# MCAL
+
+Microcontroller Abstraction Layer: direct MCU peripheral drivers (CAN) and MCAL integration wrappers.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [Can](../modules/mcal/Can) | Low-level CAN controller driver for the RH850 MCAN peripheral (init, transmit/receive, int | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Mcal_Rh850P1xC](../modules/mcal/Mcal_Rh850P1xC) | Make/config integration point for the Renesas RH850/P1x-C MCAL inside the Vector build (cf | ![o](https://img.shields.io/badge/origin-third--party%20via%20Vector-orange) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#mcal)

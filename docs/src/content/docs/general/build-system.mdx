@@ -1,0 +1,40 @@
+---
+title: Build system
+description: "How the Vector makefile fragments, DaVinci generation, and MCAL integration fit together."
+sidebar:
+  label: Build system
+  order: 4
+---
+
+# Build system
+
+There is no root `CMakeLists.txt` / `Makefile` in this snapshot — the build is the
+**Vector MICROSAR makefile system**: every module ships `BSW/<Module>/mak/` with four fragments:
+
+| Fragment | Role |
+|----------|------|
+| `*_defs.mak` | Source/header lists and include paths contributed by the module |
+| `*_cfg.mak` | References to generated/Highest-config sources |
+| `*_check.mak` | Consistency checks (tool versions, required config present) |
+| `*_rules.mak` | Build rules for the module's objects/libraries |
+
+A project-level `Global.Makefile` (part of your ECU integration project, not shipped here) includes these fragments. The template header cites `AUTOSAR_BSW_MakefileInterface.doc`.
+
+## Typical flow
+
+1. **Configure** in DaVinci Configurator (`DaVinciConfigurator/`) using `BSWMD/*/*.arxml` + ECU description → generates `*_Cfg.h/.c` (e.g. `Can_Cfg`, `ComM_Cfg`, OS objects).
+2. **Integrate MCAL**: run `ThirdParty/Mcal_Rh850P1xC/VectorIntegration/Script_MCAL_Prepare.bat` (Windows) with `MIPconfig.xml`; it applies `Patches/` (e.g. SPI bswmd copy) via `3rdPartyMcalIntegrationHelper.exe`.
+3. **Build** with your RH850 toolchain (GHS/LLVM/GCC automotive) driven by the global makefile that pulls in each `mak/` fragment.
+4. **Validate delivery** with `Misc/SipModificationChecker/SipModificationChecker.bat` + `.xml` config.
+
+## Batch helpers
+
+- `_registerDlls.bat` (root) registers generator DLLs on Windows build machines.
+- `Misc/Wdg/xsltproc/` vendors the XSLT processor used by watchdog config steps.
+- `Generators/MSSV/plugins/` are DaVinci code-emitter plugins per module.
+
+:::note[Windows-centric delivery]
+`.bat`/`.exe` tooling assumes Windows for generation; the BSW C code itself is toolchain-portable. CI here only builds the docs site, not the firmware.
+:::
+
+[Back to top](#build-system)

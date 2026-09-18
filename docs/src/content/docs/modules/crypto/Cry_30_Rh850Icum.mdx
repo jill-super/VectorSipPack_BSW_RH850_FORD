@@ -1,0 +1,92 @@
+---
+title: Cry_30_Rh850Icum
+description: "Hardware-backed crypto driver for the RH850 ICUM (AES, CMAC, RNG, key extract/wrap) used through Csm."
+sidebar:
+  label: Cry_30_Rh850Icum
+  order: 10
+---
+
+# Cry_30_Rh850Icum
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Cry_30_Rh850Icum/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Hardware-backed crypto driver for the RH850 ICUM (AES, CMAC, RNG, key extract/wrap) used through Csm.
+
+**AUTOSAR group:** MCAL-adjacent / Crypto driver (ICUM) · **Docs layer:** [Crypto](../../crypto/)
+
+[Back to top](#cry30rh850icum)
+
+## Key files (`BSW/Cry_30_Rh850Icum/`)
+
+| File | Role |
+|------|------|
+| `Cry_30_Rh850Icum.c` | implementation/header |
+| `Cry_30_Rh850Icum.h` | implementation/header |
+| `Cry_30_Rh850Icum_AesDecrypt128.c` | implementation/header |
+| `Cry_30_Rh850Icum_AesDecrypt128.h` | implementation/header |
+| `Cry_30_Rh850Icum_AesEncrypt128.c` | implementation/header |
+| `Cry_30_Rh850Icum_AesEncrypt128.h` | implementation/header |
+| `Cry_30_Rh850Icum_CmacAes128Gen.c` | implementation/header |
+| `Cry_30_Rh850Icum_CmacAes128Gen.h` | implementation/header |
+| `Cry_30_Rh850Icum_CmacAes128Ver.c` | implementation/header |
+| `Cry_30_Rh850Icum_CmacAes128Ver.h` | implementation/header |
+| `Cry_30_Rh850Icum_CommonUtil.c` | implementation/header |
+| `Cry_30_Rh850Icum_CommonUtil.h` | implementation/header |
+| `Cry_30_Rh850Icum_KeyExtract.c` | implementation/header |
+| `Cry_30_Rh850Icum_KeyExtract.h` | implementation/header |
+| `Cry_30_Rh850Icum_KeyWrapSym.c` | implementation/header |
+| `Cry_30_Rh850Icum_KeyWrapSym.h` | implementation/header |
+| `Cry_30_Rh850Icum_Rng.c` | implementation/header |
+| `Cry_30_Rh850Icum_Rng.h` | implementation/header |
+| `Cry_30_Rh850Icum_Types.h` | implementation/header |
+
+Build fragments: `BSW/Cry_30_Rh850Icum/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Cry_30_Rh850Icum_Init`
+- `Cry_30_Rh850Icum_InitMemory`
+- `Cry_30_Rh850Icum_GetVersionInfo`
+
+Full declarations live in `BSW/Cry_30_Rh850Icum/Cry_30_Rh850Icum.h`.
+
+## Usage example
+
+```c
+/* Generic Cry_30_Rh850Icum usage — exact APIs/config come from DaVinci generation. */
+#include "Cry_30_Rh850Icum.h"
+
+void Appl_Init(void)
+{
+    Cry_30_Rh850Icum_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Crypto index](../../crypto/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Cry_30_Rh850Icum/Cry_30_Rh850Icum_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Cry_30_Rh850Icum-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Cry_30_Rh850Icum.pdf`
+
+## Sources
+
+- Code: browse `BSW/Cry_30_Rh850Icum/` in the repository
+- [Back to top](#cry30rh850icum)

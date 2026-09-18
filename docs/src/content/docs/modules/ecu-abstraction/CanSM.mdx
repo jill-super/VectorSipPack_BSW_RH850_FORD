@@ -1,0 +1,96 @@
+---
+title: CanSM
+description: "Public header of the CAN State Manager AUTOSAR Release 4"
+sidebar:
+  label: CanSM
+  order: 10
+---
+
+# CanSM
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/CanSM/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Bus state machine per CAN network (init, start/stop, bus-off recovery, Tx timeout handling) coordinated with ComM and BswM.
+
+> Header brief (`BSW/CanSM/CanSM.h`): *Public header of the CAN State Manager AUTOSAR Release 4*
+
+**AUTOSAR group:** ECU Abstraction / CAN State Manager · **Docs layer:** [ECU Abstraction](../../ecu-abstraction/)
+
+[Back to top](#cansm)
+
+## Key files (`BSW/CanSM/`)
+
+| File | Role |
+|------|------|
+| `CanSM.c` | implementation/header |
+| `CanSM.h` | implementation/header |
+| `CanSM_BswM.h` | implementation/header |
+| `CanSM_Cbk.h` | implementation/header |
+| `CanSM_ComM.h` | implementation/header |
+| `CanSM_Dcm.h` | implementation/header |
+| `CanSM_EcuM.h` | implementation/header |
+| `CanSM_Int.h` | implementation/header |
+| `CanSM_TxTimeoutException.h` | implementation/header |
+
+Build fragments: `BSW/CanSM/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `CanSM_CheckBorLevel`
+- `CanSM_PreventBusSleepAtStartUp`
+- `CanSM_GetVersionInfo`
+- `CanSM_SetEcuPassive`
+- `CanSM_RamCheckEnableMailbox`
+- `CanSM_MainFunction`
+- `CanSM_RequestComMode`
+- `CanSM_ControllerBusOff`
+- `CanSM_TxTimeoutException`
+- `CanSM_StopWakeupSources`
+- `CanSM_StartWakeupSources`
+- `CanSM_ControllerModeIndication`
+- `CanSM_TransceiverModeIndication`
+- `CanSM_ClearTrcvWufFlagIndication`
+
+Full declarations live in `BSW/CanSM/CanSM.h`.
+
+## Usage example
+
+```c
+/* Generic CanSM usage — exact APIs/config come from DaVinci generation. */
+#include "CanSM.h"
+
+void Appl_Init(void)
+{
+    CanSM_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [ECU Abstraction index](../../ecu-abstraction/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/CanSM/CanSM_bswmd.arxml`
+- `BSWMD/CanSM/CanSM_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./CanSM-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanSM.pdf`
+
+## Sources
+
+- Code: browse `BSW/CanSM/` in the repository
+- [Back to top](#cansm)

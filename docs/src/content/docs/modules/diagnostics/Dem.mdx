@@ -1,0 +1,97 @@
+---
+title: Dem
+description: "Stores and manages diagnostic events, DTCs, freeze frames, debouncing and enabling conditions; front-end for D"
+sidebar:
+  label: Dem
+  order: 10
+---
+
+# Dem
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Dem/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Stores and manages diagnostic events, DTCs, freeze frames, debouncing and enabling conditions; front-end for Dcm fault-memory access.
+
+**AUTOSAR group:** Services / Diagnostic Event Manager · **Docs layer:** [Diagnostics](../../diagnostics/)
+
+[Back to top](#dem)
+
+## Key files (`BSW/Dem/`)
+
+| File | Role |
+|------|------|
+| `Dem.c` | implementation/header |
+| `Dem.h` | implementation/header |
+| `Dem_Cbk.h` | implementation/header |
+| `Dem_Cdd_Types.h` | implementation/header |
+| `Dem_Cfg_Declarations.h` | implementation/header |
+| `Dem_Cfg_Definitions.h` | implementation/header |
+| `Dem_Cfg_Macros.h` | implementation/header |
+| `Dem_Cfg_Types.h` | implementation/header |
+| `Dem_Dcm.h` | implementation/header |
+| `Dem_Types.h` | implementation/header |
+| `Dem_Validation.h` | implementation/header |
+
+Build fragments: `BSW/Dem/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Dem_SetDTCFilter`
+- `Dem_Cfg_ObdGetGlobalDenominator`
+- `Dem_GetEventFreezeFrameData`
+- `Dem_EnablePermanentStorage`
+- `Dem_SetOperationCycleState`
+- `Dem_Data_PermanentEntryFind`
+- `Dem_Init`
+- `Dem_GetVersionInfo`
+- `Dem_PreInit`
+- `Dem_Shutdown`
+- `Dem_SetEventStatus`
+- `Dem_ResetEventStatus`
+- `Dem_PrestoreFreezeFrame`
+- `Dem_ClearPrestoredFreezeFrame`
+
+Full declarations live in `BSW/Dem/Dem.h`.
+
+## Usage example
+
+```c
+/* Generic Dem usage — exact APIs/config come from DaVinci generation. */
+#include "Dem.h"
+
+void Appl_Init(void)
+{
+    Dem_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Diagnostics index](../../diagnostics/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Dem/Dem_Pre.arxml`
+- `BSWMD/Dem/Dem_bswmd.arxml`
+- `BSWMD/Dem/Dem_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Dem-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Dem.pdf`
+
+## Sources
+
+- Code: browse `BSW/Dem/` in the repository
+- [Back to top](#dem)

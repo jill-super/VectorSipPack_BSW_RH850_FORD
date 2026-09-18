@@ -1,0 +1,81 @@
+---
+title: VStdLib
+description: "Configuration of the generic Vector Standard Library (VStdLib_GenericAsr)"
+sidebar:
+  label: VStdLib
+  order: 10
+---
+
+# VStdLib
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/VStdLib/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Vector utility library (memory/bit operations used across MICROSAR modules).
+
+> Header brief (`BSW/VStdLib/_VStdLib_Cfg.h`): *Configuration of the generic Vector Standard Library (VStdLib_GenericAsr)*
+
+**AUTOSAR group:** Services / Vector standard library · **Docs layer:** [System & libraries](../../system/)
+
+[Back to top](#vstdlib)
+
+## Key files (`BSW/VStdLib/`)
+
+| File | Role |
+|------|------|
+| `_VStdLib_Cfg.h` | implementation/header |
+| `vstdlib.c` | implementation/header |
+| `vstdlib.h` | implementation/header |
+
+Build fragments: `BSW/VStdLib/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `VStdLib_GetVersionInfo`
+- `VStdLib_MemClr`
+- `VStdLib_MemSet`
+- `VStdLib_MemCpy`
+- `VStdLib_MemCpy16`
+- `VStdLib_MemCpy32`
+
+Full declarations live in `BSW/VStdLib/_VStdLib_Cfg.h`.
+
+## Usage example
+
+```c
+/* Generic VStdLib usage — exact APIs/config come from DaVinci generation. */
+#include "VStdLib.h"
+
+void Appl_Init(void)
+{
+    VStdLib_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [System & libraries index](../../system/index).
+
+## Configuration & generation
+
+- Model: - No module-specific `.arxml` in `BSWMD/VStdLib/` (uses ECU/global descriptions).
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./VStdLib-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_VStdLib_GenericAsr.pdf`
+
+## Sources
+
+- Code: browse `BSW/VStdLib/` in the repository
+- [Back to top](#vstdlib)

@@ -1,0 +1,113 @@
+---
+title: Fee_30_SmallSector
+description: "FEE header file"
+sidebar:
+  label: Fee_30_SmallSector
+  order: 10
+---
+
+# Fee_30_SmallSector
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Fee_30_SmallSector/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Flash EEPROM emulation optimized for small-sector flash: block/dataset/instance handling layered over the Renesas flash driver.
+
+> Header brief (`BSW/Fee_30_SmallSector/Fee_30_SmallSector.h`): *FEE header file*
+
+**AUTOSAR group:** ECU Abstraction / Flash EEPROM Emulation · **Docs layer:** [Memory stack](../../memory/)
+
+[Back to top](#fee30smallsector)
+
+## Key files (`BSW/Fee_30_SmallSector/`)
+
+| File | Role |
+|------|------|
+| `Fee_30_SmallSector.c` | implementation/header |
+| `Fee_30_SmallSector.h` | implementation/header |
+| `Fee_30_SmallSector_BlockHandler.c` | implementation/header |
+| `Fee_30_SmallSector_BlockHandler.h` | implementation/header |
+| `Fee_30_SmallSector_Cbk.h` | implementation/header |
+| `Fee_30_SmallSector_DatasetHandler.c` | implementation/header |
+| `Fee_30_SmallSector_DatasetHandler.h` | implementation/header |
+| `Fee_30_SmallSector_FlsCoordinator.c` | implementation/header |
+| `Fee_30_SmallSector_FlsCoordinator.h` | implementation/header |
+| `Fee_30_SmallSector_InstanceHandler.c` | implementation/header |
+| `Fee_30_SmallSector_InstanceHandler.h` | implementation/header |
+| `Fee_30_SmallSector_Layer1_Read.c` | implementation/header |
+| `Fee_30_SmallSector_Layer1_Read.h` | implementation/header |
+| `Fee_30_SmallSector_Layer1_Write.c` | implementation/header |
+| `Fee_30_SmallSector_Layer1_Write.h` | implementation/header |
+| `Fee_30_SmallSector_Layer2_DatasetEraser.c` | implementation/header |
+| `Fee_30_SmallSector_Layer2_DatasetEraser.h` | implementation/header |
+| `Fee_30_SmallSector_Layer2_InstanceFinder.c` | implementation/header |
+| `Fee_30_SmallSector_Layer2_InstanceFinder.h` | implementation/header |
+| `Fee_30_SmallSector_Layer2_WriteInstance.c` | implementation/header |
+| `Fee_30_SmallSector_Layer2_WriteInstance.h` | implementation/header |
+| `Fee_30_SmallSector_Layer3_ReadManagementBytes.c` | implementation/header |
+| `Fee_30_SmallSector_Layer3_ReadManagementBytes.h` | implementation/header |
+| `Fee_30_SmallSector_PartitionHandler.c` | implementation/header |
+| `Fee_30_SmallSector_PartitionHandler.h` | implementation/header |
+| … (2 more) | see `BSW/Fee_30_SmallSector/` |
+
+Build fragments: `BSW/Fee_30_SmallSector/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Fee_30_SmallSector_Init`
+- `Fee_30_SmallSector_Read`
+- `Fee_30_SmallSector_Write`
+- `Fee_30_SmallSector_InvalidateBlock`
+- `Fee_30_SmallSector_EraseImmediateBlock`
+- `Fee_30_SmallSector_Cancel`
+- `Fee_30_SmallSector_GetStatus`
+- `Fee_30_SmallSector_GetJobResult`
+- `Fee_30_SmallSector_GetVersionInfo`
+- `Fee_30_SmallSector_SetMode`
+- `Fee_30_SmallSector_SuspendWrites`
+- `Fee_30_SmallSector_ResumeWrites`
+- `Fee_30_SmallSector_MainFunction`
+- `Fee_30_SmallSector_AlignValue`
+
+Full declarations live in `BSW/Fee_30_SmallSector/Fee_30_SmallSector.h`.
+
+## Usage example
+
+```c
+/* Generic Fee_30_SmallSector usage — exact APIs/config come from DaVinci generation. */
+#include "Fee_30_SmallSector.h"
+
+void Appl_Init(void)
+{
+    Fee_30_SmallSector_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Memory stack index](../../memory/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Fee_30_SmallSector/Fee_30_SmallSector_SafeBSW_pre_Asr4.0.3.arxml`
+- `BSWMD/Fee_30_SmallSector/Fee_30_SmallSector_bswmd_Asr4.0.3.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Fee_30_SmallSector-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Fee_30_SmallSector.pdf`
+
+## Sources
+
+- Code: browse `BSW/Fee_30_SmallSector/` in the repository
+- [Back to top](#fee30smallsector)

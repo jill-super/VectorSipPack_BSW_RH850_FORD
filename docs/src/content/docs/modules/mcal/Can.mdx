@@ -1,0 +1,90 @@
+---
+title: Can
+description: "Interface header file of the CAN-Driver"
+sidebar:
+  label: Can
+  order: 10
+---
+
+# Can
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Can/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Low-level CAN controller driver for the RH850 MCAN peripheral (init, transmit/receive, interrupts, bus-off handling, wake-up).
+
+> Header brief (`BSW/Can/Can.h`): *Interface header file of the CAN-Driver*
+
+**AUTOSAR group:** MCAL / CAN driver (RH850 MCAN) · **Docs layer:** [MCAL](../../mcal/)
+
+[Back to top](#can)
+
+## Key files (`BSW/Can/`)
+
+| File | Role |
+|------|------|
+| `Can.c` | implementation/header |
+| `Can.h` | implementation/header |
+| `Can_Irq.c` | implementation/header |
+| `Can_Local.h` | implementation/header |
+
+Build fragments: `BSW/Can/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Can_Write`
+- `CanWakeup`
+- `CanHL_WakeupHandling`
+- `CanHL_WakeUpHandling`
+- `CanWakeUp`
+- `Can_SetControllerMode`
+- `Can_Init`
+- `Can_GetVersionInfo`
+- `Can_InitMemory`
+- `Can_EnterCritical`
+- `Can_LeaveCritical`
+- `Can_InitController`
+- `CanActiveSendState`
+- `CanResetBusOffEnd`
+
+Full declarations live in `BSW/Can/Can.h`.
+
+## Usage example
+
+```c
+/* Generic Can usage — exact APIs/config come from DaVinci generation. */
+#include "Can.h"
+
+void Appl_Init(void)
+{
+    Can_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [MCAL index](../../mcal/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Can/Can_Rh850Mcan_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Can-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanNm.pdf`
+
+## Sources
+
+- Code: browse `BSW/Can/` in the repository
+- [Back to top](#can)

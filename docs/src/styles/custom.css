@@ -1,0 +1,11 @@
+/* Starlight customization: keep default theme, add small readability tweaks. */
+:root {
+  --sl-font-system: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.75rem 0;
+}

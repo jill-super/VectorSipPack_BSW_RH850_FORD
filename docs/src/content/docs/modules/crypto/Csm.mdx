@@ -1,0 +1,90 @@
+---
+title: Csm
+description: "MICROSAR Crypto Service Manager (CSM)"
+sidebar:
+  label: Csm
+  order: 10
+---
+
+# Csm
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Csm/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Dispatches cryptographic jobs (encrypt/decrypt, MAC generate/verify, RNG, key handling) to crypto drivers (Cry_30_LibCv, Cry_30_Rh850Icum, CryFord).
+
+> Header brief (`BSW/Csm/Csm.h`): *MICROSAR Crypto Service Manager (CSM)*
+
+**AUTOSAR group:** Services / Crypto Service Manager · **Docs layer:** [Crypto](../../crypto/)
+
+[Back to top](#csm)
+
+## Key files (`BSW/Csm/`)
+
+| File | Role |
+|------|------|
+| `Csm.c` | implementation/header |
+| `Csm.h` | implementation/header |
+| `Csm_Cbk.h` | implementation/header |
+| `Csm_Types.h` | implementation/header |
+
+Build fragments: `BSW/Csm/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Csm_Init`
+- `Csm_Interruption`
+- `Csm_GetVersionInfo`
+- `Csm_HashStart`
+- `Csm_HashUpdate`
+- `Csm_HashFinish`
+- `Csm_MacGenerateStart`
+- `Csm_MacGenerateUpdate`
+- `Csm_MacGenerateFinish`
+- `Csm_MacVerifyStart`
+- `Csm_MacVerifyUpdate`
+- `Csm_MacVerifyFinish`
+- `Csm_RandomSeedStart`
+- `Csm_RandomSeedUpdate`
+
+Full declarations live in `BSW/Csm/Csm.h`.
+
+## Usage example
+
+```c
+/* Generic Csm usage — exact APIs/config come from DaVinci generation. */
+#include "Csm.h"
+
+void Appl_Init(void)
+{
+    Csm_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Crypto index](../../crypto/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Csm/Csm_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Csm-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Csm.pdf`
+
+## Sources
+
+- Code: browse `BSW/Csm/` in the repository
+- [Back to top](#csm)

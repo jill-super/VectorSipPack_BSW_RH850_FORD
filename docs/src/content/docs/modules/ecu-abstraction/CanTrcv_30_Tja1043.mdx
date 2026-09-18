@@ -1,0 +1,80 @@
+---
+title: CanTrcv_30_Tja1043
+description: "Transceiver driver for NXP TJA1043 (normal/standby/sleep, wake-up detection) controlled via CanIf/CanSM."
+sidebar:
+  label: CanTrcv_30_Tja1043
+  order: 10
+---
+
+# CanTrcv_30_Tja1043
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/CanTrcv_30_Tja1043/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Transceiver driver for NXP TJA1043 (normal/standby/sleep, wake-up detection) controlled via CanIf/CanSM.
+
+**AUTOSAR group:** ECU Abstraction / CAN Transceiver driver · **Docs layer:** [ECU Abstraction](../../ecu-abstraction/)
+
+[Back to top](#cantrcv30tja1043)
+
+## Key files (`BSW/CanTrcv_30_Tja1043/`)
+
+| File | Role |
+|------|------|
+| `CanTrcv_30_Tja1043.c` | implementation/header |
+| `CanTrcv_30_Tja1043.h` | implementation/header |
+
+Build fragments: `BSW/CanTrcv_30_Tja1043/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `CanTrcv_30_Tja1043_Init`
+- `CanTrcv_30_Tja1043_InitMemory`
+- `CanTrcv_30_Tja1043_SetOpMode`
+- `CanTrcv_30_Tja1043_GetOpMode`
+- `CanTrcv_30_Tja1043_GetBusWuReason`
+- `CanTrcv_30_Tja1043_SetWakeupMode`
+- `CanTrcv_30_Tja1043_CheckWakeup`
+- `CanTrcv_30_Tja1043_GetVersionInfo`
+- `CanTrcv_30_Tja1043_MainFunction`
+
+Full declarations live in `BSW/CanTrcv_30_Tja1043/CanTrcv_30_Tja1043.h`.
+
+## Usage example
+
+```c
+/* Generic CanTrcv_30_Tja1043 usage — exact APIs/config come from DaVinci generation. */
+#include "CanTrcv_30_Tja1043.h"
+
+void Appl_Init(void)
+{
+    CanTrcv_30_Tja1043_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [ECU Abstraction index](../../ecu-abstraction/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/CanTrcv_30_Tja1043/CanTrcv_Tja1043CanAsr_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- No dedicated Technical Reference PDF in `Doc/TechnicalReferences/` for this exact module name.
+
+## Sources
+
+- Code: browse `BSW/CanTrcv_30_Tja1043/` in the repository
+- [Back to top](#cantrcv30tja1043)

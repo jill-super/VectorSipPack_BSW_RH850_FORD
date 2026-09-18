@@ -1,0 +1,87 @@
+---
+title: Cry
+description: "Software crypto primitives (AES-128 encrypt/decrypt, CMAC-AES128 generate/verify, HMAC-SHA1, FIPS186 RNG) used"
+sidebar:
+  label: Cry
+  order: 10
+---
+
+# Cry
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Cry/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Software crypto primitives (AES-128 encrypt/decrypt, CMAC-AES128 generate/verify, HMAC-SHA1, FIPS186 RNG) used through Csm.
+
+**AUTOSAR group:** Services / Crypto Library (software) · **Docs layer:** [Crypto](../../crypto/)
+
+[Back to top](#cry)
+
+## Key files (`BSW/Cry/`)
+
+| File | Role |
+|------|------|
+| `Cry_30_LibCv.c` | implementation/header |
+| `Cry_30_LibCv.h` | implementation/header |
+| `Cry_30_LibCv_AesDecrypt128.c` | implementation/header |
+| `Cry_30_LibCv_AesDecrypt128.h` | implementation/header |
+| `Cry_30_LibCv_AesEncrypt128.c` | implementation/header |
+| `Cry_30_LibCv_AesEncrypt128.h` | implementation/header |
+| `Cry_30_LibCv_CmacAes128Gen.c` | implementation/header |
+| `Cry_30_LibCv_CmacAes128Gen.h` | implementation/header |
+| `Cry_30_LibCv_CmacAes128Ver.c` | implementation/header |
+| `Cry_30_LibCv_CmacAes128Ver.h` | implementation/header |
+| `Cry_30_LibCv_Fips186.c` | implementation/header |
+| `Cry_30_LibCv_Fips186.h` | implementation/header |
+| `Cry_30_LibCv_HmacSha1.c` | implementation/header |
+| `Cry_30_LibCv_HmacSha1.h` | implementation/header |
+
+Build fragments: `BSW/Cry/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Cry_30_LibCv_Init`
+- `Cry_30_LibCv_InitMemory`
+- `Cry_30_LibCv_GetVersionInfo`
+
+Full declarations live in `BSW/Cry/Cry_30_LibCv.h`.
+
+## Usage example
+
+```c
+/* Generic Cry usage — exact APIs/config come from DaVinci generation. */
+#include "Cry.h"
+
+void Appl_Init(void)
+{
+    Cry_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Crypto index](../../crypto/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Cry/Cry_30_LibCv_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Cry-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Cry_30_Rh850Icum.pdf`
+
+## Sources
+
+- Code: browse `BSW/Cry/` in the repository
+- [Back to top](#cry)

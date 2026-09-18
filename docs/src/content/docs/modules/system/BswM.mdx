@@ -1,0 +1,99 @@
+---
+title: BswM
+description: "Header file of MICROSAR Basic Software Mode Manager"
+sidebar:
+  label: BswM
+  order: 10
+---
+
+# BswM
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/BswM/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Arbitrates vehicle/ECU modes and executes mode-dependent action lists (maps BswM action lists to ComM, EcuM, Nm, PduR, WdgM, DCM requests).
+
+> Header brief (`BSW/BswM/BswM.h`): *Header file of MICROSAR Basic Software Mode Manager*
+
+**AUTOSAR group:** Services / Mode Management · **Docs layer:** [System & libraries](../../system/)
+
+[Back to top](#bswm)
+
+## Key files (`BSW/BswM/`)
+
+| File | Role |
+|------|------|
+| `BswM.c` | implementation/header |
+| `BswM.h` | implementation/header |
+| `BswM_CanSM.h` | implementation/header |
+| `BswM_ComM.h` | implementation/header |
+| `BswM_Dcm.h` | implementation/header |
+| `BswM_EcuM.h` | implementation/header |
+| `BswM_EthIf.h` | implementation/header |
+| `BswM_EthSM.h` | implementation/header |
+| `BswM_FrSM.h` | implementation/header |
+| `BswM_J1939Dcm.h` | implementation/header |
+| `BswM_J1939Nm.h` | implementation/header |
+| `BswM_LinSM.h` | implementation/header |
+| `BswM_LinTp.h` | implementation/header |
+| `BswM_Nm.h` | implementation/header |
+| `BswM_NvM.h` | implementation/header |
+| `BswM_PduR.h` | implementation/header |
+| `BswM_Sd.h` | implementation/header |
+| `BswM_WdgM.h` | implementation/header |
+
+Build fragments: `BSW/BswM/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `BswM0029`
+- `BswM_InitMemory`
+- `BswM_Init`
+- `BswM_Deinit`
+- `BswM_GetVersionInfo`
+- `BswM_RequestMode`
+- `BswM_RuleControl`
+- `BswM_MainFunction`
+
+Full declarations live in `BSW/BswM/BswM.h`.
+
+## Usage example
+
+```c
+/* Generic BswM usage — exact APIs/config come from DaVinci generation. */
+#include "BswM.h"
+
+void Appl_Init(void)
+{
+    BswM_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [System & libraries index](../../system/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/BswM/BswM_bswmd.arxml`
+- `BSWMD/BswM/BswM_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./BswM-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_BswM.pdf`
+
+## Sources
+
+- Code: browse `BSW/BswM/` in the repository
+- [Back to top](#bswm)

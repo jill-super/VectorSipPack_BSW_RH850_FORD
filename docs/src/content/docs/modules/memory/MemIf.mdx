@@ -1,0 +1,85 @@
+---
+title: MemIf
+description: "Memory Interface header file"
+sidebar:
+  label: MemIf
+  order: 10
+---
+
+# MemIf
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/MemIf/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Abstracts memory hardware drivers behind a common NvM-facing API (device index abstraction over Fee/EA-like drivers).
+
+> Header brief (`BSW/MemIf/MemIf.h`): *Memory Interface header file*
+
+**AUTOSAR group:** ECU Abstraction / Memory Abstraction · **Docs layer:** [Memory stack](../../memory/)
+
+[Back to top](#memif)
+
+## Key files (`BSW/MemIf/`)
+
+| File | Role |
+|------|------|
+| `MemIf.c` | implementation/header |
+| `MemIf.h` | implementation/header |
+| `MemIf_Types.h` | implementation/header |
+
+Build fragments: `BSW/MemIf/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `MemIf_Read`
+- `MemIf_Write`
+- `MemIf_InvalidateBlock`
+- `MemIf_EraseImmediateBlock`
+- `MemIf_Cancel`
+- `MemIf_GetStatus`
+- `MemIf_GetJobResult`
+- `MemIf_GetVersionInfo`
+- `MemIf_SetMode`
+
+Full declarations live in `BSW/MemIf/MemIf.h`.
+
+## Usage example
+
+```c
+/* Generic MemIf usage — exact APIs/config come from DaVinci generation. */
+#include "MemIf.h"
+
+void Appl_Init(void)
+{
+    MemIf_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Memory stack index](../../memory/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/MemIf/MemIf_SafeBSW_pre.arxml`
+- `BSWMD/MemIf/MemIf_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./MemIf-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_MemIf.pdf`
+
+## Sources
+
+- Code: browse `BSW/MemIf/` in the repository
+- [Back to top](#memif)

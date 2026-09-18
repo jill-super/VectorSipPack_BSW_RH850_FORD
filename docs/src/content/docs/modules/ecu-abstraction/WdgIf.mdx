@@ -1,0 +1,80 @@
+---
+title: WdgIf
+description: "WdgIf header file"
+sidebar:
+  label: WdgIf
+  order: 10
+---
+
+# WdgIf
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/WdgIf/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Hardware-independent watchdog abstraction over the MCU watchdog driver; trigger/mode services for WdgM.
+
+> Header brief (`BSW/WdgIf/WdgIf.h`): *WdgIf header file*
+
+**AUTOSAR group:** ECU Abstraction / Watchdog Interface · **Docs layer:** [ECU Abstraction](../../ecu-abstraction/)
+
+[Back to top](#wdgif)
+
+## Key files (`BSW/WdgIf/`)
+
+| File | Role |
+|------|------|
+| `WdgIf.c` | implementation/header |
+| `WdgIf.h` | implementation/header |
+| `WdgIf_Cfg.h` | implementation/header |
+| `WdgIf_Types.h` | implementation/header |
+
+Build fragments: `BSW/WdgIf/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `WdgIf_SetMode`
+- `WdgIf_SetTriggerCondition`
+- `WdgIf_GetVersionInfo`
+- `WdgIf_SetTriggerWindow`
+
+Full declarations live in `BSW/WdgIf/WdgIf.h`.
+
+## Usage example
+
+```c
+/* Generic WdgIf usage — exact APIs/config come from DaVinci generation. */
+#include "WdgIf.h"
+
+void Appl_Init(void)
+{
+    WdgIf_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [ECU Abstraction index](../../ecu-abstraction/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/WdgIf/WdgIf_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./WdgIf-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_WdgIf.pdf`
+
+## Sources
+
+- Code: browse `BSW/WdgIf/` in the repository
+- [Back to top](#wdgif)

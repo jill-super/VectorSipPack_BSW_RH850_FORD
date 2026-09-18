@@ -1,0 +1,27 @@
+---
+title: Diagnostics
+description: "Diagnostic stack: error tracing, event memory and diagnostic communication."
+sidebar:
+  label: Diagnostics
+  order: 20
+---
+
+# Diagnostics
+
+Diagnostic stack: error tracing, event memory and diagnostic communication.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [Dcm](../modules/diagnostics/Dcm) | Implements UDS diagnostic services (sessions, security access, DID/routine handling, uploa | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Dem](../modules/diagnostics/Dem) | Stores and manages diagnostic events, DTCs, freeze frames, debouncing and enabling conditi | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Det](../modules/diagnostics/Det) | Central development-error hook: modules report errors via Det_ReportError; supports filter | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#diagnostics)

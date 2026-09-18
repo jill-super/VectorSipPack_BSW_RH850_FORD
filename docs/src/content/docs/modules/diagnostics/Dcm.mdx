@@ -1,0 +1,91 @@
+---
+title: Dcm
+description: "Public interface of DCM for other components"
+sidebar:
+  label: Dcm
+  order: 10
+---
+
+# Dcm
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Dcm/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Implements UDS diagnostic services (sessions, security access, DID/routine handling, upload/download) on top of CanTp/PduR and Dem.
+
+> Header brief (`BSW/Dcm/Dcm.h`): *Public interface of DCM for other components*
+
+**AUTOSAR group:** Services / Diagnostic Communication Manager · **Docs layer:** [Diagnostics](../../diagnostics/)
+
+[Back to top](#dcm)
+
+## Key files (`BSW/Dcm/`)
+
+| File | Role |
+|------|------|
+| `Dcm.c` | implementation/header |
+| `Dcm.h` | implementation/header |
+| `Dcm_Cbk.h` | implementation/header |
+| `Dcm_Core.h` | implementation/header |
+| `Dcm_CoreCbk.h` | implementation/header |
+| `Dcm_CoreInt.h` | implementation/header |
+| `Dcm_CoreTypes.h` | implementation/header |
+| `Dcm_Ext.c` | implementation/header |
+| `Dcm_Ext.h` | implementation/header |
+| `Dcm_ExtCbk.h` | implementation/header |
+| `Dcm_ExtInt.h` | implementation/header |
+| `Dcm_ExtTypes.h` | implementation/header |
+| `Dcm_Int.h` | implementation/header |
+| `Dcm_Types.h` | implementation/header |
+
+Build fragments: `BSW/Dcm/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Dcm_ModeTaskMonitor`
+- `Dcm_ReadMemory`
+- `Dcm_ResetToDefaultSession`
+- `Dcm_DeInit`
+
+Full declarations live in `BSW/Dcm/Dcm.h`.
+
+## Usage example
+
+```c
+/* Generic Dcm usage — exact APIs/config come from DaVinci generation. */
+#include "Dcm.h"
+
+void Appl_Init(void)
+{
+    Dcm_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Diagnostics index](../../diagnostics/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Dcm/Dcm_bswmd.arxml`
+- `BSWMD/Dcm/Dcm_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Dcm-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Dcm.pdf`
+
+## Sources
+
+- Code: browse `BSW/Dcm/` in the repository
+- [Back to top](#dcm)

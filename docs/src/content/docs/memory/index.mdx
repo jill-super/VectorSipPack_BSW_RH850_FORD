@@ -1,0 +1,27 @@
+---
+title: Memory stack
+description: "Non-volatile memory stack: NvM → MemIf → Fee down to the flash driver."
+sidebar:
+  label: Memory stack
+  order: 20
+---
+
+# Memory stack
+
+Non-volatile memory stack: NvM → MemIf → Fee down to the flash driver.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [Fee_30_SmallSector](../modules/memory/Fee_30_SmallSector) | Flash EEPROM emulation optimized for small-sector flash: block/dataset/instance handling l | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [MemIf](../modules/memory/MemIf) | Abstracts memory hardware drivers behind a common NvM-facing API (device index abstraction | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [NvM](../modules/memory/NvM) | Manages non-volatile data blocks: read/write/restore, job queuing, CRC protection and coor | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#memory)

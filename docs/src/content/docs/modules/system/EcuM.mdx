@@ -1,0 +1,89 @@
+---
+title: EcuM
+description: "Manages ECU startup, shutdown, sleep and wake-up; initializes BSW and coordinates reset/power states."
+sidebar:
+  label: EcuM
+  order: 10
+---
+
+# EcuM
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/EcuM/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Manages ECU startup, shutdown, sleep and wake-up; initializes BSW and coordinates reset/power states.
+
+**AUTOSAR group:** Services / ECU State Manager · **Docs layer:** [System & libraries](../../system/)
+
+[Back to top](#ecum)
+
+## Key files (`BSW/EcuM/`)
+
+| File | Role |
+|------|------|
+| `EcuM.c` | implementation/header |
+| `EcuM.h` | implementation/header |
+| `EcuM_Cbk.h` | implementation/header |
+| `EcuM_Error.h` | implementation/header |
+
+Build fragments: `BSW/EcuM/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `EcuM_GoToSelectedShutdownTarget`
+- `EcuM_SelectBootTarget`
+- `EcuM_Init`
+- `EcuM_MainFunction`
+- `EcuM_InternalDeterminePbConfiguration`
+- `EcuM_GetMostRecentShutdown`
+- `EcuM_GetNextRecentShutdown`
+- `EcuM_Shutdown`
+- `EcuM_SelectShutdownTarget`
+- `EcuM_GetShutdownTarget`
+- `EcuM_GetLastShutdownTarget`
+- `EcuM_SelectShutdownCause`
+- `EcuM_GetShutdownCause`
+- `EcuM_ClearWakeupEvent`
+
+Full declarations live in `BSW/EcuM/EcuM.h`.
+
+## Usage example
+
+```c
+/* Generic EcuM usage — exact APIs/config come from DaVinci generation. */
+#include "EcuM.h"
+
+void Appl_Init(void)
+{
+    EcuM_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [System & libraries index](../../system/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/EcuM/EcuM_bswmd.arxml`
+- `BSWMD/EcuM/EcuM_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./EcuM-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_EcuM.pdf`
+
+## Sources
+
+- Code: browse `BSW/EcuM/` in the repository
+- [Back to top](#ecum)

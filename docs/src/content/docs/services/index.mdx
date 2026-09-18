@@ -1,0 +1,41 @@
+---
+title: Services
+description: "AUTOSAR Services layer hub — OS, mode/state management, diagnostics infrastructure, NVRAM, crypto dispatch, supervision."
+sidebar:
+  label: Services
+  order: 20
+---
+
+# Services
+
+The AUTOSAR **Services** layer groups system-wide infrastructure: OS, ECU/mode
+management, diagnostics, NVRAM, crypto dispatch, communication management, and
+supervision. In this repo the Services-layer modules are documented under the
+topic sections below (grouped so each module lives in exactly one place).
+
+## System & lifecycle
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [Os](../modules/system/Os/) | AUTOSAR OS: tasks, alarms, applications, protection | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [BswM](../modules/system/BswM/) | Mode arbitration and action lists | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [EcuM](../modules/system/EcuM/) | ECU startup/shutdown/sleep/wake | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [WdgM](../modules/system/WdgM/) | Software supervision (checkpoints, deadlines) | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Crc](../modules/system/Crc/) | CRC library | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+## Diagnostics, memory, crypto, communication
+
+| Module | Reference |
+|--------|-----------|
+| Det, Dem, Dcm | [Diagnostics](../diagnostics/) |
+| NvM | [Memory stack](../memory/) (+ MemIf, Fee_30_SmallSector) |
+| Csm | [Crypto](../crypto/) (+ Cry, Cry_30_Rh850Icum, CryFord, SecMod) |
+| ComM, Nm | [Communication](../communication/) (+ CanNm, COM, PduR, CanTp) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#services)

@@ -1,0 +1,89 @@
+---
+title: Mcal_Rh850P1xC
+description: "Make/config integration point for the Renesas RH850/P1x-C MCAL inside the Vector build (cfg/check/defs/rules);"
+sidebar:
+  label: Mcal_Rh850P1xC
+  order: 10
+---
+
+# Mcal_Rh850P1xC
+
+![origin](https://img.shields.io/badge/origin-third--party%20via%20Vector-orange)
+
+:::note[Origin: Third-party via Vector]
+All files under `BSW/Mcal_Rh850P1xC/` are Third-party via Vector. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Make/config integration point for the Renesas RH850/P1x-C MCAL inside the Vector build (cfg/check/defs/rules); see ThirdParty/Mcal_Rh850P1xC/VectorIntegration.
+
+**AUTOSAR group:** MCAL integration wrapper · **Docs layer:** [MCAL](../../mcal/)
+
+[Back to top](#mcalrh850p1xc)
+
+## Key files (`BSW/Mcal_Rh850P1xC/`)
+
+| File | Role |
+|------|------|
+
+
+Build fragments: `BSW/Mcal_Rh850P1xC/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- See the module header (`BSW/Mcal_Rh850P1xC/*.h`) and Technical Reference for the full API.
+
+Full declarations live in `BSW/Mcal_Rh850P1xC/*.h`.
+
+## Usage example
+
+```c
+/* Generic Mcal_Rh850P1xC usage — exact APIs/config come from DaVinci generation. */
+#include "Mcal_Rh850P1xC.h"
+
+void Appl_Init(void)
+{
+    Mcal_Rh850P1xC_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [MCAL index](../../mcal/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Mcal_Rh850P1xC/Adc_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_ADC_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_DIO_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_FLS_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_MCU_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_PORT_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_SPI_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Copy_WDG_bswmd.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Dio_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/FlsTst_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Fls_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Gpt_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Icu_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Mcu_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Port_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Pwm_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/RamTst_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Spi_bswmd_rec.arxml`
+- `BSWMD/Mcal_Rh850P1xC/Wdg_bswmd_rec.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- No dedicated Technical Reference PDF in `Doc/TechnicalReferences/` for this exact module name.
+
+## Sources
+
+- Code: browse `BSW/Mcal_Rh850P1xC/` in the repository
+- [Back to top](#mcalrh850p1xc)

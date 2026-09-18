@@ -1,0 +1,94 @@
+---
+title: Xcp
+description: "XCP header file"
+sidebar:
+  label: Xcp
+  order: 10
+---
+
+# Xcp
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Xcp/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Universal measurement and calibration protocol engine (DAQ/STIM, calibration, flashing hooks) with application callbacks in _XcpAppl.
+
+> Header brief (`BSW/Xcp/Xcp.h`): *XCP header file*
+
+**AUTOSAR group:** CDD / XCP measurement & calibration · **Docs layer:** [Complex Device Drivers](../../cdd/)
+
+[Back to top](#xcp)
+
+## Key files (`BSW/Xcp/`)
+
+| File | Role |
+|------|------|
+| `Xcp.c` | implementation/header |
+| `Xcp.h` | implementation/header |
+| `Xcp_Priv.h` | implementation/header |
+| `Xcp_Types.h` | implementation/header |
+| `_XcpAppl.c` | implementation/header |
+| `_XcpAppl.h` | implementation/header |
+
+Build fragments: `BSW/Xcp/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Xcp_Init`
+- `Xcp_SendEvent`
+- `Xcp_PutChar`
+- `Xcp_Print`
+- `Xcp_Disconnect`
+- `Xcp_SendCrm`
+- `Xcp_GetXcpDataPointer`
+- `Xcp_GetVersionInfo`
+- `Xcp_TlRxIndication`
+- `Xcp_TlTxConfirmation`
+- `Xcp_GetSessionStatus`
+- `Xcp_SetActiveTl`
+- `Xcp_GetActiveTl`
+- `Xcp_ModifyProtectionStatus`
+
+Full declarations live in `BSW/Xcp/Xcp.h`.
+
+## Usage example
+
+```c
+/* Generic Xcp usage — exact APIs/config come from DaVinci generation. */
+#include "Xcp.h"
+
+void Appl_Init(void)
+{
+    Xcp_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Complex Device Drivers index](../../cdd/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Xcp/Xcp_SafeBSW_pre.arxml`
+- `BSWMD/Xcp/Xcp_bswmd.arxml`
+- `BSWMD/Xcp/Xcp_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Xcp-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_XCP.pdf`
+
+## Sources
+
+- Code: browse `BSW/Xcp/` in the repository
+- [Back to top](#xcp)

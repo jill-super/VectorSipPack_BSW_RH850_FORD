@@ -1,0 +1,95 @@
+---
+title: ComM
+description: "Communication Manager ASR4"
+sidebar:
+  label: ComM
+  order: 10
+---
+
+# ComM
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/ComM/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Coordinates communication requests per channel (full/silent/no communication) with Nm and the bus state managers.
+
+> Header brief (`BSW/ComM/ComM.h`): *Communication Manager ASR4*
+
+**AUTOSAR group:** Services / Communication Manager · **Docs layer:** [Communication](../../communication/)
+
+[Back to top](#comm)
+
+## Key files (`BSW/ComM/`)
+
+| File | Role |
+|------|------|
+| `ComM.c` | implementation/header |
+| `ComM.h` | implementation/header |
+| `ComM_BusSM.h` | implementation/header |
+| `ComM_Dcm.h` | implementation/header |
+| `ComM_EcuMBswM.h` | implementation/header |
+| `ComM_Nm.h` | implementation/header |
+| `ComM_Types.h` | implementation/header |
+
+Build fragments: `BSW/ComM/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `ComM_GetDcmRequestStatus`
+- `ComM_GetMinFullComModeTimerStatus`
+- `ComM_GetState`
+- `ComM_GetCurrentComMode`
+- `ComM_GetRequestedComMode`
+- `ComM_MainFunction`
+- `ComM_Init`
+- `ComM_DeInit`
+- `ComM_GetStatus`
+- `ComM_GetInhibitionStatus`
+- `ComM_RequestComMode`
+- `ComM_GetMaxComMode`
+- `ComM_PreventWakeUp`
+- `ComM_LimitChannelToNoComMode`
+
+Full declarations live in `BSW/ComM/ComM.h`.
+
+## Usage example
+
+```c
+/* Generic ComM usage — exact APIs/config come from DaVinci generation. */
+#include "ComM.h"
+
+void Appl_Init(void)
+{
+    ComM_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Communication index](../../communication/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/ComM/ComM_SafeBSW_pre.arxml`
+- `BSWMD/ComM/ComM_bswmd.arxml`
+- `BSWMD/ComM/ComM_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./ComM-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Cdd_Communication.pdf`
+
+## Sources
+
+- Code: browse `BSW/ComM/` in the repository
+- [Back to top](#comm)

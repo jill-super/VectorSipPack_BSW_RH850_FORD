@@ -1,0 +1,92 @@
+---
+title: CanIf
+description: "Hardware-independent CAN abstraction: Tx/Rx routing between PDU Router/CanTp/CanNm/Xcp and one or more CAN dri"
+sidebar:
+  label: CanIf
+  order: 10
+---
+
+# CanIf
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/CanIf/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Hardware-independent CAN abstraction: Tx/Rx routing between PDU Router/CanTp/CanNm/Xcp and one or more CAN drivers, with controller/transceiver mode control.
+
+**AUTOSAR group:** ECU Abstraction / CAN Interface · **Docs layer:** [ECU Abstraction](../../ecu-abstraction/)
+
+[Back to top](#canif)
+
+## Key files (`BSW/CanIf/`)
+
+| File | Role |
+|------|------|
+| `CanIf.c` | implementation/header |
+| `CanIf.h` | implementation/header |
+| `CanIf_Cbk.h` | implementation/header |
+| `CanIf_GeneralTypes.h` | implementation/header |
+| `CanIf_Hooks.h` | implementation/header |
+| `CanIf_Types.h` | implementation/header |
+
+Build fragments: `BSW/CanIf/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `CanIf_SetPduMode`
+- `CanIf_ClearTrcvWufFlag`
+- `CanIf_GetVersionInfo`
+- `CanIf_Init`
+- `CanIfHook_OnEnd_CanIf_SetPduReceptionMode`
+- `CanIf_CancelTransmit`
+- `CanIf_GetSizeOfTxPduConfig`
+- `CanIf_SetDynamicTxId`
+- `CanIf_Det_ReportError`
+- `CanIf_InitMemory`
+- `CanIf_SetControllerMode`
+- `CanIf_GetControllerMode`
+- `CanIf_Transmit`
+- `CanIf_GetPduMode`
+
+Full declarations live in `BSW/CanIf/CanIf.h`.
+
+## Usage example
+
+```c
+/* Generic CanIf usage — exact APIs/config come from DaVinci generation. */
+#include "CanIf.h"
+
+void Appl_Init(void)
+{
+    CanIf_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [ECU Abstraction index](../../ecu-abstraction/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/CanIf/CanIf_SafeBSW_pre.arxml`
+- `BSWMD/CanIf/CanIf_bswmd.arxml`
+- `BSWMD/CanIf/CanIf_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./CanIf-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanIf.pdf`
+
+## Sources
+
+- Code: browse `BSW/CanIf/` in the repository
+- [Back to top](#canif)

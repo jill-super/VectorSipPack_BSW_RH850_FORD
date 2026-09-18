@@ -1,0 +1,82 @@
+---
+title: Det
+description: "Header of Default Error Tracer"
+sidebar:
+  label: Det
+  order: 10
+---
+
+# Det
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Det/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Central development-error hook: modules report errors via Det_ReportError; supports filtering and forwarding during development.
+
+> Header brief (`BSW/Det/Det.h`): *Header of Default Error Tracer*
+
+**AUTOSAR group:** Services / Development Error Tracer · **Docs layer:** [Diagnostics](../../diagnostics/)
+
+[Back to top](#det)
+
+## Key files (`BSW/Det/`)
+
+| File | Role |
+|------|------|
+| `Det.c` | implementation/header |
+| `Det.h` | implementation/header |
+
+Build fragments: `BSW/Det/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Det_Init`
+- `Det_Start`
+- `Det_InitMemory`
+- `Det_ReportError`
+- `Det_ReportRuntimeError`
+- `Det_ReportTransientFault`
+- `Det_GetVersionInfo`
+
+Full declarations live in `BSW/Det/Det.h`.
+
+## Usage example
+
+```c
+/* Generic Det usage — exact APIs/config come from DaVinci generation. */
+#include "Det.h"
+
+void Appl_Init(void)
+{
+    Det_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Diagnostics index](../../diagnostics/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Det/Det_bswmd.arxml`
+- `BSWMD/Det/Det_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Det-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Det.pdf`
+
+## Sources
+
+- Code: browse `BSW/Det/` in the repository
+- [Back to top](#det)

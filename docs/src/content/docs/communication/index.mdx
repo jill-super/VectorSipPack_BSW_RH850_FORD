@@ -1,0 +1,29 @@
+---
+title: Communication
+description: "End-to-end communication stack: COM, PDU routing, network management and transport."
+sidebar:
+  label: Communication
+  order: 20
+---
+
+# Communication
+
+End-to-end communication stack: COM, PDU routing, network management and transport.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [CanNm](../modules/communication/CanNm) | CAN-specific network management: node monitoring, sleep/wake coordination and bus-sleep en | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [CanTp](../modules/communication/CanTp) | Segmentation/reassembly (ISO-TP) for diagnostic and large PDUs over CAN between PduR and C | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Com](../modules/communication/Com) | Signal-based communication: packs/unpacks signals into I-PDUs, handles transmission modes, | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [ComM](../modules/communication/ComM) | Coordinates communication requests per channel (full/silent/no communication) with Nm and  | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Nm](../modules/communication/Nm) | Bus-independent network-management interface delegating to bus-specific Nm (here CanNm), i | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#communication)

@@ -1,0 +1,47 @@
+---
+title: Vector SIP overview
+description: "What the Vector SIP delivery CBD1601056 D05 contains and how to use it."
+sidebar:
+  label: SIP overview
+  order: 1
+---
+
+# Vector SIP overview
+
+![SIP](https://img.shields.io/badge/SIP-18.00.15-blue) ![Delivery](https://img.shields.io/badge/delivery-CBD1601056_D05-green)
+
+This repository **is** a Vector **Software Integration Package (SIP)** — the delivery mechanism by which Vector ships MICROSAR BSW + configuration tooling for one
+customer program.
+
+## Delivery identity
+
+| Field | Value |
+|-------|-------|
+| Delivery ID | `CBD1601056_D05` |
+| SIP number | `18.00.15` |
+| Customer | Nexteer Automotive Corporation |
+| Program | MSR_Ford_SLP1 |
+| MCU derivative | `R7F701373AEABG (RH850/P1x-C)` |
+| License file | `SipLicense.lic` |
+| Disclaimer | `BetaDisclaimer.txt` (beta — limited liability) |
+
+## What's inside the SIP
+
+- **BSW sources** (`BSW/`) — one directory per MICROSAR module, each with `mak/` build fragments. Canonical reference: [Modules](/services/) and the [layer indexes](/communication/).
+- **BSW descriptions** (`BSWMD/`) — `.arxml` per module for DaVinci Configurator.
+- **SWC** (`SWC/SecAccess/`) — Ford security-access SWC.
+- **MCAL integration** (`ThirdParty/`) — Renesas MCAL adaptation.
+- **Tooling** (`Generators/`, `DaVinciConfigurator/`, `Misc/`).
+- **Documents** (`Doc/`) — Technical References, Application Notes, User Manuals, Delivery Information, Release Notes, Safety Manual.
+
+## Integrity & support
+
+- Run `Misc/SipModificationChecker/SipModificationChecker.bat` before modifying anything; it detects deviations from the shipped SIP.
+- Delivery proof: `Doc/DeliveryInformation/` (product information, LUA, issue report) — see converted summaries under [Delivery documents](/general/delivery-docs/).
+- Support contact per `SipLicense.lic`: Support@vector.com.
+
+## Per-module SIP notes
+
+[SIP module notes](./all-modules/) mirror every BSW module with SIP-specific context (delivery scope, config notes) and link to the canonical reference pages.
+
+[Back to top](#vector-sip-overview)

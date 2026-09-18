@@ -1,0 +1,38 @@
+---
+title: Project overview
+description: "What this repository is, who it is for, and how it is organized."
+sidebar:
+  label: Project overview
+  order: 1
+---
+
+# Project overview
+
+![C](https://img.shields.io/badge/language-C-blue) ![AUTOSAR](https://img.shields.io/badge/standard-AUTOSAR%204-green) ![MCU](https://img.shields.io/badge/MCU-Renesas%20RH850-red)
+
+This repository is the **Vector MICROSAR SIP delivery CBD1601056 D05**
+(SIP 18.00.15) for **Nexteer / MSR_Ford_SLP1** on the **Renesas RH850/P1x-C**
+(`R7F701373AEABG`). It contains the AUTOSAR Basic Software, its BSW module
+descriptions (BSWMD), a Ford security-access SWC, configuration/generation
+tooling, and the full Vector delivery documentation set.
+
+## What it provides
+
+- **Communication stack** — Can driver (RH850 MCAN), CanIf, CanSM, CanNm + generic Nm, ComM, COM, PduR, CanTp, TJA1043 transceiver.
+- **Diagnostics & supervision** — Det, Dem, Dcm, WdgM/WdgIf.
+- **Memory stack** — NvM → MemIf → Fee_30_SmallSector (over the Renesas flash driver).
+- **Crypto stack** — Csm dispatch; software `Cry_30_LibCv`; RH850 ICUM hardware driver; Ford `CryFord` package; cryptovision `SecMod` library.
+- **System** — Os, EcuM, BswM, Crc, VStdLib, shared `_Common` headers.
+- **Calibration/measurement** — Xcp + CanXcp with application hooks (`_XcpAppl`).
+- **Tooling** — DaVinci Configurator, RTE/XSLT generators, MSSV plugins, RteAnalyzer, McData/XCP tooling, MCAL integration helper, SipModificationChecker.
+
+## What it is not
+
+- Not a complete ECU application: there is no application task/IOHwAb beyond the `SWC/SecAccess` example; you integrate these BSW modules into your ECU project.
+- Not MIT-licensed code (except this docs site's own text): every `BSW/*` file carries a Vector copyright header. See [Vector vs. custom](./vector-vs-custom/).
+
+## Quick links
+
+- [Repository structure](./repo-structure/) · [Build system](./build-system/) · [Vector SIP](/sip/) · [Delivery documents](./delivery-docs/)
+
+[Back to top](#project-overview)

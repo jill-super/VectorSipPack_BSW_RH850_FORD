@@ -1,0 +1,89 @@
+---
+title: CanTp
+description: "CanTp main header file"
+sidebar:
+  label: CanTp
+  order: 10
+---
+
+# CanTp
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/CanTp/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Segmentation/reassembly (ISO-TP) for diagnostic and large PDUs over CAN between PduR and CanIf.
+
+> Header brief (`BSW/CanTp/CanTp.h`): *CanTp main header file*
+
+**AUTOSAR group:** Communication / CAN Transport Protocol · **Docs layer:** [Communication](../../communication/)
+
+[Back to top](#cantp)
+
+## Key files (`BSW/CanTp/`)
+
+| File | Role |
+|------|------|
+| `CanTp.c` | implementation/header |
+| `CanTp.h` | implementation/header |
+| `CanTp_Cbk.h` | implementation/header |
+| `CanTp_Priv.h` | implementation/header |
+| `CanTp_Types.h` | implementation/header |
+
+Build fragments: `BSW/CanTp/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `CanTp_Init`
+- `CanTp_InitMemory`
+- `CanTp_Shutdown`
+- `CanTp_Transmit`
+- `CanTp_MainFunction`
+- `CanTp_GetVersionInfo`
+- `CanTp_ChangeParameter`
+- `CanTp_ReadParameter`
+- `CanTp_CancelTransmit`
+- `CanTp_CancelReceive`
+
+Full declarations live in `BSW/CanTp/CanTp.h`.
+
+## Usage example
+
+```c
+/* Generic CanTp usage — exact APIs/config come from DaVinci generation. */
+#include "CanTp.h"
+
+void Appl_Init(void)
+{
+    CanTp_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Communication index](../../communication/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/CanTp/CanTp_SafeBSW_pre.arxml`
+- `BSWMD/CanTp/CanTp_bswmd.arxml`
+- `BSWMD/CanTp/CanTp_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./CanTp-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanTp.pdf`
+
+## Sources
+
+- Code: browse `BSW/CanTp/` in the repository
+- [Back to top](#cantp)

@@ -1,0 +1,74 @@
+---
+title: CryFord
+description: "Ford-specific crypto/MACsec access package: prebuilt library plus C configuration; wiring to the project crypt"
+sidebar:
+  label: CryFord
+  order: 10
+---
+
+# CryFord
+
+![origin](https://img.shields.io/badge/origin-Vector%20(Ford--customised)-purple)
+
+:::note[Origin: Vector-provided (Ford-customised)]
+All files under `BSW/CryFord/` are Vector-provided (Ford-customised). Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Ford-specific crypto/MACsec access package: prebuilt library plus C configuration; wiring to the project crypto stack.
+
+**AUTOSAR group:** CDD / Ford crypto access · **Docs layer:** [Crypto](../../crypto/)
+
+[Back to top](#cryford)
+
+## Key files (`BSW/CryFord/`)
+
+| File | Role |
+|------|------|
+| `CryFord.lib` | implementation/header |
+| `CryFord_Cfg.h` | implementation/header |
+| `CryFord_MacSecAccess.h` | implementation/header |
+| `_CryFord_Cfg.c` | implementation/header |
+
+Build fragments: `BSW/CryFord/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- See the module header (`BSW/CryFord/*.h`) and Technical Reference for the full API.
+
+Full declarations live in `BSW/CryFord/CryFord_Cfg.h`.
+
+## Usage example
+
+```c
+/* Generic CryFord usage — exact APIs/config come from DaVinci generation. */
+#include "CryFord.h"
+
+void Appl_Init(void)
+{
+    CryFord_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Crypto index](../../crypto/index).
+
+## Configuration & generation
+
+- Model: - No module-specific `.arxml` in `BSWMD/CryFord/` (uses ECU/global descriptions).
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- No dedicated Technical Reference PDF in `Doc/TechnicalReferences/` for this exact module name.
+
+## Sources
+
+- Code: browse `BSW/CryFord/` in the repository
+- [Back to top](#cryford)

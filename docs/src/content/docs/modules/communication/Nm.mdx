@@ -1,0 +1,92 @@
+---
+title: Nm
+description: "AUTOSAR NM Interface header file"
+sidebar:
+  label: Nm
+  order: 10
+---
+
+# Nm
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Nm/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Bus-independent network-management interface delegating to bus-specific Nm (here CanNm), including coordinator shutdown logic.
+
+> Header brief (`BSW/Nm/Nm.h`): *AUTOSAR NM Interface header file*
+
+**AUTOSAR group:** Services / Generic Network Management · **Docs layer:** [Communication](../../communication/)
+
+[Back to top](#nm)
+
+## Key files (`BSW/Nm/`)
+
+| File | Role |
+|------|------|
+| `Nm.c` | implementation/header |
+| `Nm.h` | implementation/header |
+| `NmStack_Types.h` | implementation/header |
+| `Nm_Cbk.h` | implementation/header |
+
+Build fragments: `BSW/Nm/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Nm_SynchronizationPoint`
+- `Nm_MainFunction`
+- `Nm_CarWakeUpIndication`
+- `Nm_NetworkStartIndication`
+- `Nm_NetworkMode`
+- `Nm_BusSleepModeAuxFunc`
+- `Nm_Init`
+- `Nm_InitMemory`
+- `Nm_PassiveStartUp`
+- `Nm_NetworkRequest`
+- `Nm_NetworkRelease`
+- `Nm_EnableCommunication`
+- `Nm_DisableCommunication`
+- `Nm_SetUserData`
+
+Full declarations live in `BSW/Nm/Nm.h`.
+
+## Usage example
+
+```c
+/* Generic Nm usage — exact APIs/config come from DaVinci generation. */
+#include "Nm.h"
+
+void Appl_Init(void)
+{
+    Nm_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Communication index](../../communication/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Nm/Nm_SafeBSW_pre.arxml`
+- `BSWMD/Nm/Nm_bswmd.arxml`
+- `BSWMD/Nm/Nm_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Nm-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanNm.pdf`
+
+## Sources
+
+- Code: browse `BSW/Nm/` in the repository
+- [Back to top](#nm)

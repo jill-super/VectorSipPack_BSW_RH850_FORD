@@ -1,0 +1,81 @@
+---
+title: Crc
+description: "Cyclic redundancy check header file"
+sidebar:
+  label: Crc
+  order: 10
+---
+
+# Crc
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Crc/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+CRC computation library (SAEJ1850/16/32/64 variants per AUTOSAR) used by NvM, COM/E2E and others.
+
+> Header brief (`BSW/Crc/Crc.h`): *Cyclic redundancy check header file*
+
+**AUTOSAR group:** Services / CRC library · **Docs layer:** [System & libraries](../../system/)
+
+[Back to top](#crc)
+
+## Key files (`BSW/Crc/`)
+
+| File | Role |
+|------|------|
+| `Crc.c` | implementation/header |
+| `Crc.h` | implementation/header |
+
+Build fragments: `BSW/Crc/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Crc_CalculateCRC8`
+- `Crc_CalculateCRC8H2F`
+- `Crc_CalculateCRC16`
+- `Crc_CalculateCRC32`
+- `Crc_CalculateCRC32P4`
+- `Crc_CalculateCRC64`
+- `Crc_GetVersionInfo`
+
+Full declarations live in `BSW/Crc/Crc.h`.
+
+## Usage example
+
+```c
+/* Generic Crc usage — exact APIs/config come from DaVinci generation. */
+#include "Crc.h"
+
+void Appl_Init(void)
+{
+    Crc_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [System & libraries index](../../system/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Crc/Crc_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Crc-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Crc.pdf`
+
+## Sources
+
+- Code: browse `BSW/Crc/` in the repository
+- [Back to top](#crc)

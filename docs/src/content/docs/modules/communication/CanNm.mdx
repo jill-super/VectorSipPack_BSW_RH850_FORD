@@ -1,0 +1,91 @@
+---
+title: CanNm
+description: "AUTOSAR CAN Network Management"
+sidebar:
+  label: CanNm
+  order: 10
+---
+
+# CanNm
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/CanNm/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+CAN-specific network management: node monitoring, sleep/wake coordination and bus-sleep entry on CAN channels.
+
+> Header brief (`BSW/CanNm/CanNm.h`): *AUTOSAR CAN Network Management*
+
+**AUTOSAR group:** Communication / CAN Network Management · **Docs layer:** [Communication](../../communication/)
+
+[Back to top](#cannm)
+
+## Key files (`BSW/CanNm/`)
+
+| File | Role |
+|------|------|
+| `CanNm.c` | implementation/header |
+| `CanNm.h` | implementation/header |
+| `CanNm_Cbk.h` | implementation/header |
+
+Build fragments: `BSW/CanNm/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `CanNm_Init`
+- `CanNm_PassiveStartup`
+- `CanNm_NetworkRequest`
+- `CanNm_NetworkRelease`
+- `CanNm_SetUserData`
+- `CanNm_GetUserData`
+- `CanNm_GetNodeIdentifier`
+- `CanNm_GetLocalNodeIdentifier`
+- `CanNm_RepeatMessageRequest`
+- `CanNm_GetPduData`
+- `CanNm_GetState`
+- `CanNm_DisableCommunication`
+- `CanNm_EnableCommunication`
+- `CanNm_MainFunction`
+
+Full declarations live in `BSW/CanNm/CanNm.h`.
+
+## Usage example
+
+```c
+/* Generic CanNm usage — exact APIs/config come from DaVinci generation. */
+#include "CanNm.h"
+
+void Appl_Init(void)
+{
+    CanNm_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Communication index](../../communication/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/CanNm/CanNm_SafeBSW_pre.arxml`
+- `BSWMD/CanNm/CanNm_bswmd.arxml`
+- `BSWMD/CanNm/CanNm_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./CanNm-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_CanNm.pdf`
+
+## Sources
+
+- Code: browse `BSW/CanNm/` in the repository
+- [Back to top](#cannm)

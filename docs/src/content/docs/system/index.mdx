@@ -1,0 +1,31 @@
+---
+title: System & libraries
+description: "System functions and shared libraries: mode/ECU management, supervision, CRC, standard libs, common headers."
+sidebar:
+  label: System & libraries
+  order: 20
+---
+
+# System & libraries
+
+System functions and shared libraries: mode/ECU management, supervision, CRC, standard libs, common headers.
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [BswM](../modules/system/BswM) | Arbitrates vehicle/ECU modes and executes mode-dependent action lists (maps BswM action li | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Crc](../modules/system/Crc) | CRC computation library (SAEJ1850/16/32/64 variants per AUTOSAR) used by NvM, COM/E2E and  | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [EcuM](../modules/system/EcuM) | Manages ECU startup, shutdown, sleep and wake-up; initializes BSW and coordinates reset/po | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Os](../modules/system/Os) | AUTOSAR OS services used by this SIP: tasks, alarms, counters, applications/partitions, pr | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [VStdLib](../modules/system/VStdLib) | Vector utility library (memory/bit operations used across MICROSAR modules). | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [WdgM](../modules/system/WdgM) | Supervises software aliveness (checkpoints, alive counters, deadlines) and escalates via W | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [_Common](../modules/system/_Common) | Shared MICROSAR foundation headers every module builds against: standard/autosar types, co | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#system)

@@ -1,0 +1,50 @@
+---
+title: BSW RH850 FORD docs
+description: "AUTOSAR BSW (Vector MICROSAR SIP CBD1601056) for Renesas RH850 — module reference, layer guides, and converted delivery documents."
+template: splash
+hero:
+  tagline: AUTOSAR Basic Software for Renesas RH850, tailored for Ford — Vector MICROSAR SIP CBD1601056 (D05).
+  actions:
+    - text: Project overview
+      link: /general/project-overview/
+      icon: right-arrow
+    - text: Vector vs. custom
+      link: /general/vector-vs-custom/
+      icon: open-book
+    - text: Browse modules
+      link: /services/
+      icon: puzzle
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Start here
+
+<CardGrid stagger>
+  <Card title="AUTOSAR layers" icon="layers">
+    From MCAL up to Services: [MCAL](/mcal/), [ECU Abstraction](/ecu-abstraction/),
+    [Communication](/communication/), [Memory](/memory/), [Diagnostics](/diagnostics/),
+    [Crypto](/crypto/), [Services](/services/), plus [ASW](/asw/) and [CDD](/cdd/).
+  </Card>
+  <Card title="Vector SIP" icon="package">
+    This repo **is** a Vector delivery: SIP 18.00.15, CBD1601056 D05 for Nexteer /
+    MSR_Ford_SLP1 on RH850/P1x-C. See the [SIP hub](/sip/).
+  </Card>
+  <Card title="Build it" icon="setting">
+    GNU-Make `mak/` fragments per module, DaVinci Configurator generation, Renesas
+    MCAL integration. See [Build system](/general/build-system/).
+  </Card>
+  <Card title="Delivery documents" icon="document">
+    60+ Vector PDFs converted to searchable summaries under
+    [General documents](/general/delivery-docs/) and linked from each module page.
+  </Card>
+</CardGrid>
+
+:::caution[License — read before copying]
+In-house-style doc text here is MIT (see root `LICENSE`), but `BSW/`, `BSWMD/`,
+`SWC/`, `Generators/`, `DaVinciConfigurator/`, `Doc/`, `Misc/`, and `ThirdParty/`
+are **Vector / third-party proprietary** — usable only with a valid Vector SIP
+license (`SipLicense.lic`). [Details](/general/vector-vs-custom/).
+:::
+
+[Back to top](#bsw-rh850-ford-docs)

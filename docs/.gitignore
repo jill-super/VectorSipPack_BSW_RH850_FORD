@@ -1,0 +1,7 @@
+# ---> docs
+# Astro build output goes here when you run `npm run build` inside docs/.
+# Kept empty in git; CI uploads it as the Pages artifact on deploy.
+dist/
+# Local dependencies (reinstalled via `npm install` / CI).
+node_modules/
+.astro/

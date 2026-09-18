@@ -1,0 +1,37 @@
+---
+title: Vector vs. custom
+description: "Which parts of the repo are Vector-provided, third-party, or custom — and what that means for licensing."
+sidebar:
+  label: Vector vs. custom
+  order: 2
+---
+
+# Vector vs. custom
+
+![Vector](https://img.shields.io/badge/origin-Vector--provided-blue) ![Ford](https://img.shields.io/badge/origin-Vector%20(Ford--customised)-purple) ![3rd](https://img.shields.io/badge/origin-third--party%20via%20Vector-orange)
+
+**Rule of thumb: the entire functional delivery is Vector-provided.** Detection method used for this classification: `Copyright … Vector Informatik GmbH`, `MICROSAR`, `DaVinci`, and `GenData` markers in file headers, plus `SipLicense.lic` (CBD1601056 D05) at the root. No in-house custom BSW source was found in this snapshot.
+
+## Classification
+
+| Path | Origin | Notes |
+|------|--------|-------|
+| `BSW/*` (except below) | Vector-provided | MICROSAR modules incl. `mak/` build fragments |
+| `BSW/CryFord/`, `SWC/SecAccess/` | Vector-provided (Ford-customised) | Ford-specific crypto access / security-access SWC |
+| `BSW/SecMod/` | Third-party via Vector | cryptovision cv act library/ES |
+| `BSW/Mcal_Rh850P1xC/mak/`, `ThirdParty/` | Third-party via Vector | Renesas RH850 MCAL + Vector integration (`VectorIntegration/`, patches) |
+| `BSWMD/` | Vector-provided | AUTOSAR BSW module descriptions (`.arxml`) |
+| `Generators/`, `DaVinciConfigurator/`, `Misc/` | Vector-provided | Config/generation/analysis tooling |
+| `Doc/`, `DocumentationGuide_VectorAUTOSAR.pdf` | Vector-provided | Delivery documentation (PDF/HTML) |
+| `docs/` (this site), root `README.md` | Custom (MIT) | Documentation you can freely reuse |
+| Root `LICENSE` | MIT + third-party notice | MIT covers site/docs text; third-party code keeps its own terms |
+
+## Practical consequences
+
+- :::caution[Do not relicense Vector files]
+  Do not strip Vector headers, do not publish `BSW/` sources beyond your SIP license rights, and do not treat them as MIT. Regeneration with DaVinci Configurator overwrites generated files.
+  :::
+- `SipModificationChecker` (`Misc/SipModificationChecker/`) verifies delivery integrity — run it before reporting issues to Vector support.
+- Beta disclaimer applies (`BetaDisclaimer.txt`): parts are beta; Vector liability is limited to the extent permitted by law.
+
+[Back to top](#vector-vs-custom)

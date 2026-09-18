@@ -1,0 +1,35 @@
+---
+title: SwcSecAccessFord
+description: "Ford security-access application SWC (Vector-provided, Ford-customised)."
+sidebar:
+  label: SwcSecAccessFord
+  order: 10
+---
+
+# SwcSecAccessFord
+
+![origin](https://img.shields.io/badge/origin-Vector%20(Ford--customised)-purple)
+
+:::note[Origin: Vector-provided (Ford-customised)]
+`SWC/SecAccess/` implements the Ford security-access application SWC on top of Dcm/Dem. Vector copyright; Ford-specific behaviour. Usable only under the SIP license.
+:::
+
+## Purpose
+
+Implements Ford security-access (seed/key, SupSecured services) as an AUTOSAR SWC: handles Dcm-routed security-access requests and delegates crypto to the BSW crypto stack (Csm/Cry).
+
+## Key files (`SWC/SecAccess/`)
+
+| File | Role |
+|------|------|
+| `SwcSecAccessFord.c` / `.h` | SWC implementation + interface |
+| `_SwcSecAccessFord_Cfg.h` | Pre-config / template config |
+| `SwcSecAccessFord_swc.arxml` | SWC description for RTE generation |
+
+Delivery doc: `Doc/TechnicalReferences/TechnicalReference_Diag_AsrSwcSecAccess_Ford.pdf` (see [converted summary](../../general/converted/technical-references/technicalreference-diag-asrswcsecaccess-ford/)).
+
+## Dependencies
+
+Dcm (service dispatch), Csm/Cry (key/crypto), RTE (ports), Det (error reporting).
+
+[Back to top](#swcsecaccessford)

@@ -1,0 +1,27 @@
+---
+title: Complex Device Drivers (CDD)
+description: "Hardware-adjacent drivers outside pure AUTOSAR standardization (XCP, VSG, Ford crypto access)."
+sidebar:
+  label: Complex Device Drivers (CDD)
+  order: 20
+---
+
+# Complex Device Drivers (CDD)
+
+Hardware-adjacent drivers outside pure AUTOSAR standardization (XCP, VSG, Ford crypto access).
+
+## Modules in this layer
+
+| Module | Responsibility | Origin |
+|--------|----------------|--------|
+| [CanXcp](../modules/cdd/CanXcp) | XCP transport layer binding Xcp PDUs to CAN frames via CanIf/PduR. | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Vsg](../modules/cdd/Vsg) | Vehicle System Group support entry point for variant/system-group handling in MICROSAR com | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+| [Xcp](../modules/cdd/Xcp) | Universal measurement and calibration protocol engine (DAQ/STIM, calibration, flashing hoo | ![o](https://img.shields.io/badge/origin-Vector--provided-blue) |
+
+:::caution[Vector vs. custom]
+Everything listed here is Vector-provided (or third-party via Vector) unless
+marked otherwise. See [Vector vs. custom](../general/vector-vs-custom/) for
+the full classification.
+:::
+
+[Back to top](#cdd)

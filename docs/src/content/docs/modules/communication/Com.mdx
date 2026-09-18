@@ -1,0 +1,90 @@
+---
+title: Com
+description: "MICROSAR Communication header file"
+sidebar:
+  label: Com
+  order: 10
+---
+
+# Com
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/Com/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Signal-based communication: packs/unpacks signals into I-PDUs, handles transmission modes, notifications, and reception deadlines/filters.
+
+> Header brief (`BSW/Com/Com.h`): *MICROSAR Communication header file*
+
+**AUTOSAR group:** Services / Communication (COM) · **Docs layer:** [Communication](../../communication/)
+
+[Back to top](#com)
+
+## Key files (`BSW/Com/`)
+
+| File | Role |
+|------|------|
+| `Com.c` | implementation/header |
+| `Com.h` | implementation/header |
+
+Build fragments: `BSW/Com/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `Com_ReceiveSignalGroup`
+- `Com_TriggerIPDUSendWithMetaData`
+- `Com_TxSignal_EvaluateFilter`
+- `Com`
+- `Com_Init`
+- `Com_DeInit`
+- `Com_LMgt_CallDetErrorContinue`
+- `Com_TxModeHdlr_IsDirectTxMode`
+- `Com_IsCurrentTxMode`
+- `Com_IsDirectOfTxModeTrue`
+- `Com_GetTxModeTrueIdxOfTxModeInfo`
+- `Com_IsDirectOfTxModeFalse`
+- `Com_GetTxModeFalseIdxOfTxModeInfo`
+- `Com_GetStatus`
+
+Full declarations live in `BSW/Com/Com.h`.
+
+## Usage example
+
+```c
+/* Generic Com usage — exact APIs/config come from DaVinci generation. */
+#include "Com.h"
+
+void Appl_Init(void)
+{
+    Com_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Communication index](../../communication/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/Com/Com_SafeBSW_pre.arxml`
+- `BSWMD/Com/Com_bswmd.arxml`
+- `BSWMD/Com/Com_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./Com-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_Cdd_Communication.pdf`
+
+## Sources
+
+- Code: browse `BSW/Com/` in the repository
+- [Back to top](#com)

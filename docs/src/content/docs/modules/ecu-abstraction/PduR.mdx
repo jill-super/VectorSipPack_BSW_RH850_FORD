@@ -1,0 +1,88 @@
+---
+title: PduR
+description: "Routes I-PDUs between COM, DCM, CanTp, CanIf and other upper/lower layers per static routing tables."
+sidebar:
+  label: PduR
+  order: 10
+---
+
+# PduR
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/PduR/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Routes I-PDUs between COM, DCM, CanTp, CanIf and other upper/lower layers per static routing tables.
+
+**AUTOSAR group:** ECU Abstraction / PDU Router · **Docs layer:** [ECU Abstraction](../../ecu-abstraction/)
+
+[Back to top](#pdur)
+
+## Key files (`BSW/PduR/`)
+
+| File | Role |
+|------|------|
+| `PduR.c` | implementation/header |
+| `PduR.h` | implementation/header |
+
+Build fragments: `BSW/PduR/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `PduR_RmTp_LoAndUpTransmit`
+- `PduR_RmTp_BufAdminMgr_ReleaseRxBuffer`
+- `PduR_Init`
+- `PduR_InitMemory`
+- `PduR_Det_ReportError`
+- `PduR_GetConfigurationId`
+- `PduR_GetVersionInfo`
+- `PduR_EnableRouting`
+- `PduR_DisableRouting`
+- `PduR_RmTp_StartOfReception`
+- `PduR_RmTp_CopyRxData`
+- `PduR_RmTp_CopyTxData`
+- `PduR_RmTp_TpTxConfirmation`
+- `PduR_RmTp_MultipleSourceHandler_Transmit`
+
+Full declarations live in `BSW/PduR/PduR.h`.
+
+## Usage example
+
+```c
+/* Generic PduR usage — exact APIs/config come from DaVinci generation. */
+#include "PduR.h"
+
+void Appl_Init(void)
+{
+    PduR_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [ECU Abstraction index](../../ecu-abstraction/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/PduR/PduR_SafeBSW_pre.arxml`
+- `BSWMD/PduR/PduR_bswmd.arxml`
+- `BSWMD/PduR/PduR_preo.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./PduR-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_PduR.pdf`
+
+## Sources
+
+- Code: browse `BSW/PduR/` in the repository
+- [Back to top](#pdur)

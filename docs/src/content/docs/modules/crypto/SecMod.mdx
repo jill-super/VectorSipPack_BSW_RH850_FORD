@@ -1,0 +1,83 @@
+---
+title: SecMod
+description: "Third-party embedded crypto library (cv act library/ES by cryptovision) providing big-number/symmetric/hash pr"
+sidebar:
+  label: SecMod
+  order: 10
+---
+
+# SecMod
+
+![origin](https://img.shields.io/badge/origin-third--party%20via%20Vector-orange)
+
+:::note[Origin: Third-party via Vector]
+All files under `BSW/SecMod/` are Third-party via Vector. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Third-party embedded crypto library (cv act library/ES by cryptovision) providing big-number/symmetric/hash primitives consumed by Vector security components.
+
+**AUTOSAR group:** Third-party crypto lib (cv act) · **Docs layer:** [Crypto](../../crypto/)
+
+[Back to top](#secmod)
+
+## Key files (`BSW/SecMod/`)
+
+| File | Role |
+|------|------|
+| `ESLib.h` | implementation/header |
+| `ESLib_Config.h` | implementation/header |
+| `ESLib_ERC.h` | implementation/header |
+| `ESLib_RNG.h` | implementation/header |
+| `ESLib_V1.1_compatibility.h` | implementation/header |
+| `ESLib_t.h` | implementation/header |
+| `ESLib_types.h` | implementation/header |
+| `ESLib_version.h` | implementation/header |
+| `SecMod.lib` | implementation/header |
+| `actConfig.h` | implementation/header |
+| `actITypes.h` | implementation/header |
+| `actPlatformTypes.h` | implementation/header |
+| `actVersion.h` | implementation/header |
+
+Build fragments: `BSW/SecMod/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- See the module header (`BSW/SecMod/*.h`) and Technical Reference for the full API.
+
+Full declarations live in `BSW/SecMod/ESLib.h`.
+
+## Usage example
+
+```c
+/* Generic SecMod usage — exact APIs/config come from DaVinci generation. */
+#include "SecMod.h"
+
+void Appl_Init(void)
+{
+    SecMod_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Crypto index](../../crypto/index).
+
+## Configuration & generation
+
+- Model: - No module-specific `.arxml` in `BSWMD/SecMod/` (uses ECU/global descriptions).
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- No dedicated Technical Reference PDF in `Doc/TechnicalReferences/` for this exact module name.
+
+## Sources
+
+- Code: browse `BSW/SecMod/` in the repository
+- [Back to top](#secmod)

@@ -1,0 +1,78 @@
+---
+title: _Common
+description: "Shared MICROSAR foundation headers every module builds against: standard/autosar types, compiler abstraction,"
+sidebar:
+  label: _Common
+  order: 10
+---
+
+# _Common
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/_Common/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Shared MICROSAR foundation headers every module builds against: standard/autosar types, compiler abstraction, memory mapping and COM-stack types.
+
+**AUTOSAR group:** Common / ComStack & compiler abstraction · **Docs layer:** [System & libraries](../../system/)
+
+[Back to top](#common)
+
+## Key files (`BSW/_Common/`)
+
+| File | Role |
+|------|------|
+| `Can_GeneralTypes.h` | implementation/header |
+| `ComStack_Types.h` | implementation/header |
+| `Compiler.h` | implementation/header |
+| `Platform_Types.h` | implementation/header |
+| `Std_Types.h` | implementation/header |
+| `_Compiler_Cfg.h` | implementation/header |
+| `_MemMap.h` | implementation/header |
+
+Build fragments: `BSW/_Common/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- See the module header (`BSW/_Common/*.h`) and Technical Reference for the full API.
+
+Full declarations live in `BSW/_Common/Can_GeneralTypes.h`.
+
+## Usage example
+
+```c
+/* Generic _Common usage — exact APIs/config come from DaVinci generation. */
+#include "_Common.h"
+
+void Appl_Init(void)
+{
+    _Common_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [System & libraries index](../../system/index).
+
+## Configuration & generation
+
+- Model: - No module-specific `.arxml` in `BSWMD/_Common/` (uses ECU/global descriptions).
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./_Common-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_ComM.pdf`
+
+## Sources
+
+- Code: browse `BSW/_Common/` in the repository
+- [Back to top](#common)

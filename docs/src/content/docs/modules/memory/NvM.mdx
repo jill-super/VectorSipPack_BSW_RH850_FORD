@@ -1,0 +1,99 @@
+---
+title: NvM
+description: "Manages non-volatile data blocks: read/write/restore, job queuing, CRC protection and coordination with MemIf/"
+sidebar:
+  label: NvM
+  order: 10
+---
+
+# NvM
+
+![origin](https://img.shields.io/badge/origin-Vector--provided-blue)
+
+:::note[Origin: Vector-provided]
+All files under `BSW/NvM/` are Vector-provided. Do not relicense them under MIT — see the
+root `LICENSE` third-party notice and `SipLicense.lic`. Configuration is generated
+with DaVinci Configurator; hand edits to generated files are overwritten.
+:::
+
+## Purpose
+
+Manages non-volatile data blocks: read/write/restore, job queuing, CRC protection and coordination with MemIf/Fee at shutdown and startup.
+
+**AUTOSAR group:** Services / NVRAM Manager · **Docs layer:** [Memory stack](../../memory/)
+
+[Back to top](#nvm)
+
+## Key files (`BSW/NvM/`)
+
+| File | Role |
+|------|------|
+| `NvM.c` | implementation/header |
+| `NvM.h` | implementation/header |
+| `NvM_Act.c` | implementation/header |
+| `NvM_Act.h` | implementation/header |
+| `NvM_Cbk.h` | implementation/header |
+| `NvM_Crc.c` | implementation/header |
+| `NvM_Crc.h` | implementation/header |
+| `NvM_JobProc.c` | implementation/header |
+| `NvM_JobProc.h` | implementation/header |
+| `NvM_Qry.c` | implementation/header |
+| `NvM_Qry.h` | implementation/header |
+| `NvM_Queue.c` | implementation/header |
+| `NvM_Queue.h` | implementation/header |
+| `NvM_Types.h` | implementation/header |
+
+Build fragments: `BSW/NvM/mak/` (`*_cfg.mak`, `*_check.mak`, `*_defs.mak`, `*_rules.mak`) plug the module into the Vector makefile system (see [Build system](../../general/build-system)).
+
+## Public API (excerpt)
+
+- `NvM_QryMemHwaBusy`
+- `NvM_QryNvBusy`
+- `NvM_QryWriteBlockOnce`
+- `NvM_KillWriteAll`
+- `NvM_CrcJob_Process`
+- `NvM_GetDataIndex`
+- `NvM_QueueFindBlock`
+- `NvM_UnqueueJob`
+- `NvM_SetBlockPendingWriteAll`
+- `NvM_CrcGetQueuedBlockId`
+- `NvM_CrcQueueCountTrailingZeros`
+- `NvM_DetCommonChecks`
+- `NvM_DetHasPermanentRamBlock`
+- `NvM_ActFinishCfgIdCheck`
+
+Full declarations live in `BSW/NvM/NvM.h`.
+
+## Usage example
+
+```c
+/* Generic NvM usage — exact APIs/config come from DaVinci generation. */
+#include "NvM.h"
+
+void Appl_Init(void)
+{
+    NvM_Init(NULL_PTR); /* PreCompile/PostBuild config pointer as generated */
+}
+```
+
+## Dependencies
+
+- Foundation headers: `BSW/_Common/` (`Std_Types.h`, `Compiler.h`, `MemMap`, `ComStack_Types.h`).
+- Det for development-error reporting; EcuM/BswM for lifecycle where applicable.
+- Layer neighbours: see the [Memory stack index](../../memory/index).
+
+## Configuration & generation
+
+- Model: - `BSWMD/NvM/NvM_SafeBSW_pre.arxml`
+- `BSWMD/NvM/NvM_bswmd.arxml`
+- Generate with DaVinci Configurator (see [Tools & generators](../../tools/index)); build via the module `mak/` fragments.
+
+## Delivery documentation
+
+- Converted summary: `./NvM-doc.md` (if present in this folder)
+- Original PDF: `Doc/TechnicalReferences/TechnicalReference_NvM.pdf`
+
+## Sources
+
+- Code: browse `BSW/NvM/` in the repository
+- [Back to top](#nvm)
